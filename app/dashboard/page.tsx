@@ -2,20 +2,14 @@ import LogoutButton from '@/components/LogoutButton';
 import ReactionButton from '@/components/ReactionButton';
 
 export const dynamic = 'force-dynamic';
-// เปลี่ยนมาดึงข้อมูลจาก API ภายในของเราเอง (หน้า API ที่เคยโชว์ {"messages":[]})
+import { listMessages } from '@/lib/messageService';
+
+// เปลี่ยนมาดึงข้อมูลจาก Database โดยตรงเลย เพื่อไม่ให้มีปัญหา localhost ตอนอยู่บน Vercel
 async function getContactMessages() {
   try {
-    // ต้องใส่ cache: 'no-store' เพื่อให้เว็บดึงข้อมูลใหม่เสมอ ไม่เอาของเก่าที่ค้างในระบบมาแสดง
-    const res = await fetch('http://localhost:3000/api/contact', {
-      cache: 'no-store' 
-    });
-    
-    if (!res.ok) return [];
-    
-    const data = await res.json();
-    return data.messages || []; // อิงจากโครงสร้าง JSON ที่เราทำไว้ใน Lab 0
+    return await listMessages();
   } catch (error) {
-    console.error("Fetch error:", error);
+    console.error("Database error:", error);
     return [];
   }
 }
