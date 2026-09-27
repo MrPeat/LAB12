@@ -43,8 +43,8 @@ export default function RootLayout({
 
         {/* --- ส่วน Footer ด้านล่างสุด --- */}
         <footer className="bg-white text-center py-6 text-gray-400 text-sm border-t mt-auto">
-          <p>© 2026 My Profile - สร้างด้วย Next.js + TypeScript</p>
-          <p className="mt-1">0214321 Web App Design & Development</p>
+          <p>© 2026 My Profile - สร้างด้วย Next.js + TypeScript (Deployed via Vercel)</p>
+          <p className="mt-1">0214321 Web App Design & Development - v1.0.0</p>
         </footer>
 
       </body>
